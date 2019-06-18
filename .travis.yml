@@ -15,6 +15,7 @@ matrix:
         - bundle exec rake spec
         - bundle exec kitchen test -d always
     - os: windows
+      language: generic
       install:
         - choco install -y ruby
         - choco install -y docker
