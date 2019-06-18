@@ -1,6 +1,22 @@
-dist: xenial
-language: ruby
-cache: bundler
+matrix:
+  include:
+    - os: linux
+      dist: xenial
+      language: ruby
+      cache: bundler
+      script:
+        - bundle exec docker version
+        - bundle exec kitchen --version
+        - bundle exec rake spec
+        - bundle exec kitchen test -d always
+    - os: windows
+      language: ruby
+      script:
+        - export KITCHEN_LOCAL_YAML=".kitchen.windows.yml"
+        - bundle exec docker version
+        - bundle exec kitchen --version
+        - bundle exec rake spec
+        - bundle exec kitchen test -d always
 
 rvm:
 - 2.3.8
@@ -10,9 +26,3 @@ rvm:
 
 services:
 - docker
-
-script:
-- bundle exec docker version
-- bundle exec kitchen --version
-- bundle exec rake spec
-- bundle exec kitchen test -d always

@@ -41,7 +41,7 @@ platforms:
 
 suites:
 - name: default
-  excludes: [arch]
+  excludes: [arch, fedora-latest]
 - name: default-fedora
   includes: [fedora-latest]
   driver:

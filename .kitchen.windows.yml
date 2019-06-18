@@ -1,0 +1,25 @@
+<% # Make sure the local copy of the driver is loaded %>
+<% lib = File.expand_path('../lib', __FILE__) %>
+<% $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib) %>
+---
+driver:
+  name: docker
+  provision_command: 
+    - powershell -ExecutionPolicy Bypass -NoLogo -Command . { iwr -useb https://omnitruck.chef.io/install.ps1 } | iex; install
+
+provisioner:
+  name: dummy
+
+platforms:
+- name: windows
+  driver_config:
+    image: mcr.microsoft.com/windows/servercore:1803
+    platform: windows
+
+suites:
+- name: default-windows
+- name: inspec-windows
+  driver:
+    provision_command: true
+  verifier:
+    name: inspec
