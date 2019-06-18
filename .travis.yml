@@ -1,0 +1,18 @@
+dist: xenial
+language: ruby
+cache: bundler
+
+rvm:
+- 2.3.8
+- 2.4.5
+- 2.5.4
+- 2.6.2
+
+services:
+- docker
+
+script:
+- bundle exec docker version
+- bundle exec kitchen --version
+- bundle exec rake spec
+- bundle exec kitchen test -d always
