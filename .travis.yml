@@ -17,11 +17,10 @@ matrix:
     - os: windows
       language: bash
       script:
-        - export DOCKER_HOST="tcp://0.0.0.0:2375"
         - export KITCHEN_LOCAL_YAML=".kitchen.windows.yml"
         - ruby -v
         - gem install bundler
-        - bundle install
+        - bundle install --force
         - bundle exec docker version
         - bundle exec kitchen --version
         - bundle exec rake spec
