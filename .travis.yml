@@ -15,13 +15,11 @@ matrix:
         - bundle exec rake spec
         - bundle exec kitchen test -d always
     - os: windows
-      language: generic
-      install:
-        - choco install -y ruby
-        - choco install -y docker
+      language: bash
       script:
         - export DOCKER_HOST="tcp://0.0.0.0:2375"
         - export KITCHEN_LOCAL_YAML=".kitchen.windows.yml"
+        - ruby -v
         - sc config docker binpath= "\"C:\Program Files\Docker\Docker\Resources\dockerd.exe\" --run-service -H tcp://0.0.0.0:2375"
         - net stop docker
         - net start docker
