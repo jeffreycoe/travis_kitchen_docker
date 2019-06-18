@@ -46,8 +46,8 @@ suites:
   includes: [fedora-latest]
   driver:
     provision_command:
-    - curl -L https://www.chef.io/chef/install.sh | bash
     - yum install libxcrypt-compat.x86_64 -y
+    - curl -L https://www.chef.io/chef/install.sh | bash    
   excludes: [arch]
 - name: context
   excludes: [arch]
