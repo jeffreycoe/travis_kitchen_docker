@@ -20,10 +20,11 @@ matrix:
         - export DOCKER_HOST="tcp://0.0.0.0:2375"
         - export KITCHEN_LOCAL_YAML=".kitchen.windows.yml"
         - ruby -v
-        - C:\opscode\chef\embedded\bin\bundle exec docker version
-        - C:\opscode\chef\embedded\bin\bundle exec kitchen --version
-        - C:\opscode\chef\embedded\bin\bundle exec rake spec
-        - C:\opscode\chef\embedded\bin\bundle exec kitchen test -d always
+        - gem install bundler
+        - bundle exec docker version
+        - bundle exec kitchen --version
+        - bundle exec rake spec
+        - bundle exec kitchen test -d always
 
 services:
 - docker
