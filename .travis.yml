@@ -21,6 +21,7 @@ matrix:
         - export KITCHEN_LOCAL_YAML=".kitchen.windows.yml"
         - ruby -v
         - gem install bundler
+        - bundle install
         - bundle exec docker version
         - bundle exec kitchen --version
         - bundle exec rake spec
