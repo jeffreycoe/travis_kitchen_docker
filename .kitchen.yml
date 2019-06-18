@@ -41,6 +41,9 @@ platforms:
 
 suites:
 - name: default
+  includes: [fedora-latest]
+    provision_command:
+    - yum install libxcrypt-compat.x86_64 -y
   excludes: [arch]
 - name: context
   excludes: [arch]
