@@ -4,25 +4,30 @@ matrix:
       dist: xenial
       language: ruby
       cache: bundler
+      rvm:
+        - 2.3.8
+        - 2.4.5
+        - 2.5.4
+        - 2.6.2
       script:
         - bundle exec docker version
         - bundle exec kitchen --version
         - bundle exec rake spec
         - bundle exec kitchen test -d always
     - os: windows
-      language: ruby
+      install:
+        - choco install -y ruby
+        - choco install -y docker
       script:
+        - export DOCKER_HOST="tcp://0.0.0.0:2375"
         - export KITCHEN_LOCAL_YAML=".kitchen.windows.yml"
+        - sc config docker binpath= "\"C:\Program Files\docker\dockerd.exe\" --run-service -H tcp://0.0.0.0:2375"
+        - net stop docker
+        - net start docker
         - bundle exec docker version
         - bundle exec kitchen --version
         - bundle exec rake spec
         - bundle exec kitchen test -d always
-
-rvm:
-- 2.3.8
-- 2.4.5
-- 2.5.4
-- 2.6.2
 
 services:
 - docker
