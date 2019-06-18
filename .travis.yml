@@ -21,7 +21,7 @@ matrix:
       script:
         - export DOCKER_HOST="tcp://0.0.0.0:2375"
         - export KITCHEN_LOCAL_YAML=".kitchen.windows.yml"
-        - sc config docker binpath= "\"C:\Program Files\docker\dockerd.exe\" --run-service -H tcp://0.0.0.0:2375"
+        - sc config docker binpath= "\"C:\Program Files\Docker\Docker\Resources\dockerd.exe\" --run-service -H tcp://0.0.0.0:2375"
         - net stop docker
         - net start docker
         - bundle exec docker version
