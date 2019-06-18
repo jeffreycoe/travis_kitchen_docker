@@ -41,9 +41,12 @@ platforms:
 
 suites:
 - name: default
+  excludes: [arch]
+- name: default-fedora
   includes: [fedora-latest]
   driver:
     provision_command:
+    - curl -L https://www.chef.io/chef/install.sh | bash
     - yum install libxcrypt-compat.x86_64 -y
   excludes: [arch]
 - name: context
