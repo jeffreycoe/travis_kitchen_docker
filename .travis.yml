@@ -20,7 +20,8 @@ matrix:
         - choco install msys2
       script:
         - export KITCHEN_YAML=.kitchen.windows.yml
-        - ridk exec pacman -Sy --needed base-devel mingw-w64-x86_64-toolchain
+        - source ~/.bashrc
+        - ridk exec pacman -Sy --noconfirm --needed base-devel mingw-w64-x86_64-toolchain
         - ruby -v
         - gem install bundler
         - bundle install
