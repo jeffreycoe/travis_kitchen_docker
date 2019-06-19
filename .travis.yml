@@ -4,10 +4,6 @@ matrix:
       dist: xenial
       language: ruby
       cache: bundler
-      rvm:
-        - 2.4.5
-        - 2.5.4
-        - 2.6.2
       script:
         - bundle exec docker version
         - bundle exec kitchen --version
@@ -18,7 +14,7 @@ matrix:
       install:
         - choco install mingw
         - choco install msys2
-        - $(dirname $(which ruby))/ridk exec pacman -Sy --needed base-devel mingw-w64-x86_64-toolchain
+        - pacman -Sy --needed base-devel mingw-w64-x86_64-toolchain
       script:
         - export KITCHEN_YAML=.kitchen.windows.yml
         - ruby -v
@@ -28,6 +24,11 @@ matrix:
         - bundle exec kitchen --version
         - bundle exec rake spec
         - bundle exec kitchen test -d always
+
+rvm:
+  - 2.4.5
+  - 2.5.4
+  - 2.6.2
 
 services:
 - docker
