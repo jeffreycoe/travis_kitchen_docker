@@ -5,7 +5,11 @@
 driver:
   name: docker
   provision_command: 
-    - powershell -ExecutionPolicy Bypass -NoLogo -Command . { iwr -useb https://omnitruck.chef.io/install.ps1 } | iex; install
+    - powershell -ExecutionPolicy Bypass -NoLogo -Command . { iwr -useb https://omnitruck.chef.io/install.ps1 } ^| iex; install
+
+transport:
+  name: docker
+  socket: tcp://localhost:2375
 
 provisioner:
   name: dummy
@@ -20,6 +24,6 @@ suites:
 - name: default-windows
 - name: inspec-windows
   driver:
-    provision_command: true
+    provision_command: echo 1
   verifier:
     name: inspec

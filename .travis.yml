@@ -17,11 +17,12 @@ matrix:
     - os: windows
       language: bash
       install:
+        - which ruby
         - choco install mingw
         - choco install msys2
         - ridk exec pacman -Sy --needed base-devel mingw-w64-x86_64-toolchain
       script:
-        - export KITCHEN_LOCAL_YAML=".kitchen.windows.yml"
+        - export KITCHEN_YAML=.kitchen.windows.yml
         - ruby -v
         - gem install bundler
         - bundle install
