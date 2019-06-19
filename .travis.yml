@@ -22,6 +22,7 @@ matrix:
         - echo $(dirname $(which ruby))
         - ls -alh $(dirname $(which ruby))
         - export PATH=$PATH:/c/tools/msys64/usr/bin
+        - printenv
         - pacman -h
         - pacman -S --noconfirm --needed base-devel mingw-w64-x86_64-toolchain
       script:
