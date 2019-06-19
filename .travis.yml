@@ -18,6 +18,7 @@ matrix:
       install:
         - choco install mingw
         - choco install msys2
+        - choco install ruby2.devkit
       script:
         - export KITCHEN_YAML=.kitchen.windows.yml
         - source ~/.bashrc
