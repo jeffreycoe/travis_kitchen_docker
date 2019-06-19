@@ -16,6 +16,8 @@ matrix:
         - bundle exec kitchen test -d always
     - os: windows
       language: bash
+      install:
+        - choco install msys2
       script:
         - export KITCHEN_LOCAL_YAML=".kitchen.windows.yml"
         - ruby -v
