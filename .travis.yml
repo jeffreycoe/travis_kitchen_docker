@@ -19,10 +19,8 @@ matrix:
       install:
         - choco install mingw
         - choco install msys2
-        - choco install make
-        - choco install ruby2.devkit
+        - ridk exec pacman -Sy --needed base-devel mingw-w64-x86_64-toolchain
       script:
-        - refreshenv
         - export KITCHEN_LOCAL_YAML=".kitchen.windows.yml"
         - ruby -v
         - gem install bundler
