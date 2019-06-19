@@ -17,12 +17,15 @@ matrix:
     - os: windows
       language: bash
       install:
+        - choco install mingw
         - choco install msys2
+        - choco install make
       script:
+        - refreshenv
         - export KITCHEN_LOCAL_YAML=".kitchen.windows.yml"
         - ruby -v
         - gem install bundler
-        - bundle install --force
+        - bundle install
         - bundle exec docker version
         - bundle exec kitchen --version
         - bundle exec rake spec
