@@ -20,6 +20,7 @@ matrix:
         - choco install mingw
         - choco install msys2
         - choco install make
+        - choco install ruby2.devkit
       script:
         - refreshenv
         - export KITCHEN_LOCAL_YAML=".kitchen.windows.yml"
