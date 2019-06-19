@@ -18,13 +18,8 @@ matrix:
       install:
         - choco install mingw
         - choco install msys2
-        - ls -alh /c/tools/msys64/usr/bin
-        - echo $(dirname $(which ruby))
-        - ls -alh $(dirname $(which ruby))
         - export PATH=$PATH:/c/tools/msys64/usr/bin
-        - printenv
-        - pacman -h
-        - pacman -S --noconfirm --needed base-devel mingw-w64-x86_64-toolchain
+        - ridk.cmd pacman -S --noconfirm --needed base-devel mingw-w64-x86_64-toolchain
       script:
         - export KITCHEN_YAML=.kitchen.windows.yml
         - ruby -v
