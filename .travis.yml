@@ -5,7 +5,6 @@ matrix:
       language: ruby
       cache: bundler
       rvm:
-        - 2.3.8
         - 2.4.5
         - 2.5.4
         - 2.6.2
@@ -17,10 +16,9 @@ matrix:
     - os: windows
       language: bash
       install:
-        - which ruby
         - choco install mingw
         - choco install msys2
-        - ridk exec pacman -Sy --needed base-devel mingw-w64-x86_64-toolchain
+        - /c/tools/ruby25/bin/ridk exec pacman -Sy --needed base-devel mingw-w64-x86_64-toolchain
       script:
         - export KITCHEN_YAML=.kitchen.windows.yml
         - ruby -v
