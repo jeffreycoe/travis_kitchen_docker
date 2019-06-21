@@ -1,5 +1,18 @@
 matrix:
   include:
+    - os: linux
+      rvm:
+        - 2.4.5
+        - 2.5.4
+        - 2.6.2
+      dist: xenial
+      language: ruby
+      cache: bundler
+      script:
+        - bundle exec docker version
+        - bundle exec kitchen --version
+        - bundle exec rake spec
+        - bundle exec kitchen test -d always
     - os: windows
       env:
         - OS_PLATFORM=windows
@@ -18,28 +31,6 @@ matrix:
         - bundle exec kitchen --version
         - bundle exec rake spec
         - bundle exec kitchen test -d always
-  exclude:
-    - rvm: 2.4.5
-      env: OS_PLATFORM=windows
-    - rvm: 2.5.4
-      env: OS_PLATFORM=windows
-    - rvm: 2.6.2
-      env: OS_PLATFORM=windows
-
-os: linux
-dist: xenial
-language: ruby
-cache: bundler
-script:
-  - bundle exec docker version
-  - bundle exec kitchen --version
-  - bundle exec rake spec
-  - bundle exec kitchen test -d always
-
-- rvm:
-  - 2.4.5
-  - 2.5.4
-  - 2.6.2
 
 services:
 - docker
