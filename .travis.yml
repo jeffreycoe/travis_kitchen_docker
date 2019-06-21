@@ -3,10 +3,6 @@ matrix:
     - os: linux
       dist: xenial
       language: ruby
-      rvm:
-        - 2.4.5
-        - 2.5.4
-        - 2.6.2
       cache: bundler
       script:
         - bundle exec docker version
@@ -14,6 +10,8 @@ matrix:
         - bundle exec rake spec
         - bundle exec kitchen test -d always
     - os: windows
+      env:
+        OS_PLATFORM=windows
       language: bash
       install:
         - choco install mingw
@@ -29,6 +27,18 @@ matrix:
         - bundle exec kitchen --version
         - bundle exec rake spec
         - bundle exec kitchen test -d always
+  exclude:
+    - rvm: 2.4.5
+      env: OS_PLATFORM=windows
+    - rvm: 2.5.4
+      env: OS_PLATFORM=windows
+    - rvm: 2.6.2
+      env: OS_PLATFORM=windows
 
+rvm:
+  - 2.4.5
+  - 2.5.4
+  - 2.6.2
+  
 services:
 - docker
