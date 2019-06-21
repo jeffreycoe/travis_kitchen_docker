@@ -24,6 +24,7 @@ matrix:
       script:
         - powershell -ExecutionPolicy Bypass -NoLogo -File docker.ps1
         - export KITCHEN_YAML=.kitchen.windows.yml
+        - export PATH=$PATH:/c/opscode/chef/embedded/bin
         - ruby -v
         - gem install bundler
         - bundle install
