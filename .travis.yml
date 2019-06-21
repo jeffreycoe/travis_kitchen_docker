@@ -20,7 +20,7 @@ matrix:
         - choco install msys2
         - ridk.cmd exec pacman -S --noconfirm --needed base-devel mingw-w64-x86_64-toolchain
       script:
-        - powershell -File docker.ps1
+        - powershell -ExecutionPolicy Bypass -NoLogo -File docker.ps1
         - export KITCHEN_YAML=.kitchen.windows.yml
         - ruby -v
         - gem install bundler
