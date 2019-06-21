@@ -21,11 +21,11 @@ platforms:
     platform: windows
 
 suites:
-- name: default-windows
+- name: default
 - name: context
   driver:
     build_context: false
-- name: inspec-windows
+- name: inspec
   driver:
     provision_command: echo 1
   verifier:
