@@ -31,7 +31,7 @@ matrix:
         - bundle exec docker version
         - bundle exec kitchen --version
         - bundle exec rake spec
-        - bundle exec kitchen test -d always
+        - travis_wait 30 bundle exec kitchen test -d always
 
 services:
 - docker
