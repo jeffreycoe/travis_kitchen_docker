@@ -14,8 +14,6 @@ matrix:
         - bundle exec rake spec
         - bundle exec kitchen test -d always
     - os: windows
-      env:
-        - OS_PLATFORM=windows
       language: bash
       install:
         - choco install mingw
@@ -25,6 +23,7 @@ matrix:
         - powershell -ExecutionPolicy Bypass -NoLogo -File docker.ps1
         - export KITCHEN_YAML=.kitchen.windows.yml
         - export PATH=$PATH:/c/opscode/chef/embedded/bin
+        - printenv
         - ruby -v
         - gem install bundler
         - bundle install
