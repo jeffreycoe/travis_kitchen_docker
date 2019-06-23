@@ -49,6 +49,7 @@ matrix:
         - bundle exec kitchen test -d always
         - powershell -Command Get-Process
         - taskkill /f /im powershell.exe
+        - net stop docker
 
 services:
 - docker
