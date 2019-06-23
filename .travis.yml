@@ -32,8 +32,6 @@ matrix:
         - bundle exec kitchen test -d always
     - os: windows
       language: bash
-      env:
-        YARN_GPG=no
       install:
         - choco install mingw
         - choco install msys2
@@ -41,8 +39,6 @@ matrix:
       script:
         - powershell -ExecutionPolicy Bypass -NoLogo -File docker.ps1
         - export KITCHEN_YAML=.kitchen.windows.yml
-        - export PATH=$PATH:/c/opscode/chef/embedded/bin
-        - printenv
         - ruby -v
         - gem install bundler
         - bundle install

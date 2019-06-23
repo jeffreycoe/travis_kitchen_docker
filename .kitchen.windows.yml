@@ -6,6 +6,7 @@ driver:
   name: docker
   provision_command: 
     - powershell -ExecutionPolicy Bypass -NoLogo -Command . { iwr -useb https://omnitruck.chef.io/install.ps1 } ^| iex; install
+    - powershell -ExecutionPolicy Bypass -NoLogo -Command Add-Content -Path $Profile.CurrentUserAllHosts -Value '$env:PATH="""$env:PATH;C:\opscode\chef\embedded\bin"""'
 
 transport:
   name: docker
