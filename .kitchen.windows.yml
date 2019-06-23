@@ -5,8 +5,8 @@
 driver:
   name: docker
   provision_command: 
-    - set PATH=%PATH%;C:\opscode\chef\embedded\bin
     - powershell -ExecutionPolicy Bypass -NoLogo -Command . { iwr -useb https://omnitruck.chef.io/install.ps1 } ^| iex; install
+    - powershell -Command $path=$env:Path + ';c:\opscode\chef\embedded\bin'; Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Environment\' -Name Path -Value $path
 
 transport:
   name: docker
