@@ -32,6 +32,7 @@ matrix:
         - bundle exec kitchen test -d always
     - os: windows
       language: bash
+      filter_secrets: false
       install:
         - choco install mingw
         - choco install msys2
