@@ -37,6 +37,7 @@ matrix:
         - choco install msys2
         - ridk.cmd exec pacman -S --noconfirm --needed base-devel mingw-w64-x86_64-toolchain
       script:
+        - powershell -Command Get-Process
         - powershell -ExecutionPolicy Bypass -NoLogo -File docker.ps1
         - export KITCHEN_YAML=.kitchen.windows.yml
         - ruby -v
@@ -46,6 +47,7 @@ matrix:
         - bundle exec kitchen --version
         - bundle exec rake spec
         - bundle exec kitchen test -d always
+        - powershell -Command Get-Process
 
 services:
 - docker
