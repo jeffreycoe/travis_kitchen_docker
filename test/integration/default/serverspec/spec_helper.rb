@@ -14,10 +14,10 @@
 # limitations under the License.
 #
 
-require 'serverspec'
-require 'spec_helper'
-
-# Just make sure the image launched and is reachable.
-describe command('true') do
-  its(:exit_status) { is_expected.to eq 0 }
+case RbConfig::CONFIG['host_os']
+when /mswin|msys|mingw|cygwin|bccwin|wince|emc/
+  set :backend, :cmd
+  set :os, :family => 'windows'
+else
+  set :backend, :exec
 end
