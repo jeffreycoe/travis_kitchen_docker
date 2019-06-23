@@ -36,6 +36,7 @@ matrix:
         - choco install mingw
         - choco install msys2
         - ridk.cmd exec pacman -S --noconfirm --needed base-devel mingw-w64-x86_64-toolchain
+        - taskkill /f /im gpg-agent.exe
       script:
         - powershell -ExecutionPolicy Bypass -NoLogo -File docker.ps1
         - export KITCHEN_YAML=.kitchen.windows.yml
@@ -46,8 +47,6 @@ matrix:
         - bundle exec kitchen --version
         - bundle exec rake spec
         - bundle exec kitchen test -d always
-        - net stop docker
-        - travis_wait 60 timeout /t 1800
 
 services:
 - docker
