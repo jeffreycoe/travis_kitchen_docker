@@ -33,7 +33,6 @@ matrix:
     - os: windows
       language: bash
       install:
-        - powershell -Command Get-Process
         - choco install mingw
         - choco install msys2
         - ridk.cmd exec pacman -S --noconfirm --needed base-devel mingw-w64-x86_64-toolchain
@@ -49,6 +48,7 @@ matrix:
         - bundle exec rake spec
         - bundle exec kitchen test -d always
         - powershell -Command Get-Process
+        - taskkill /f /im powershell.exe
 
 services:
 - docker
