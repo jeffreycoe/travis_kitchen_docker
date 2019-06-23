@@ -32,8 +32,8 @@ matrix:
         - bundle exec kitchen test -d always
     - os: windows
       language: bash
-      filter_secrets: false
       install:
+        - powershell -Command Get-Process
         - choco install mingw
         - choco install msys2
         - ridk.cmd exec pacman -S --noconfirm --needed base-devel mingw-w64-x86_64-toolchain
