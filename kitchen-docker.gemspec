@@ -37,5 +37,4 @@ Gem::Specification.new do |spec|
   # Integration testing gems.
   spec.add_development_dependency 'kitchen-inspec', '~> 1.1'
   spec.add_development_dependency 'train', '~> 2.1'
-  spec.add_development_dependency 'docker-api', '~> 1.34'
 end
