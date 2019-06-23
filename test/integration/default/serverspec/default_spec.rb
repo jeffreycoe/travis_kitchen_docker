@@ -15,14 +15,17 @@
 #
 
 require 'serverspec'
-set :backend, :exec
 
 # Just make sure the image launched and is reachable.
 if os[:family] == 'windows'
+  set :backend, :cmd
+
   describe command('echo 1') do
     its(:exit_status) { is_expected.to eq 0 }
   end
 else
+  set :backend, :exec
+
   describe command('true') do
     its(:exit_status) { is_expected.to eq 0 }
   end
